@@ -65,7 +65,7 @@ public class ChooseAreaFragment extends Fragment {
         titleText = (TextView)view.findViewById(R.id.title_text);
         backButton = (Button)view.findViewById(R.id.back_button);
         listView = (ListView)view.findViewById(R.id.list_view);
-        adapter = new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,dataList);
+        adapter = new ArrayAdapter<>(getContext(),R.layout.choose_item,dataList);
         listView.setAdapter(adapter);
         return view;
     }
@@ -192,7 +192,7 @@ public class ChooseAreaFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
-                boolean result = false;  
+                boolean result = false;
                 if ("province".equals(type)){
                     result = Utility.handleProvinceResponse(responseText);
                 }else if ("city".equals(type)){

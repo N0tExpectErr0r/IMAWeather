@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:textColor="#fff"
         tools:text="2018-03-09"/>
     
@@ -24,24 +24,17 @@
         android:textColor="#fff"
         tools:text="晴"/>
 
-    <TextView
-        android:id="@+id/max_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="right"
-        android:textColor="#fff"
-        tools:text="20"/>
 
     <TextView
-        android:id="@+id/min_text"
+        android:id="@+id/temp_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:gravity="right"
         android:textColor="#fff"
-        tools:text="27"/>
+        tools:text="20~27℃"/>
+
+
 
 </LinearLayout>

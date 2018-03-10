@@ -33,6 +33,8 @@ public class WeatherActivity extends AppCompatActivity {
 
     private Button navButton;
 
+    private Button navSetting;
+
     public SwipeRefreshLayout swipeRefresh;
 
     private String mWeatherId;
@@ -59,11 +61,17 @@ public class WeatherActivity extends AppCompatActivity {
 
     private TextView sportText;
 
+    private TextView aqiScore;
+
+    private View aqiColor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         //初始化控件
+        aqiScore = (TextView)findViewById(R.id.aqi_score);
+        aqiColor = (View)findViewById(R.id.aqi_color);
         weatherLayout = (ScrollView) findViewById(R.id.weather_layout);
         titleCity = (TextView)findViewById(R.id.title_city);
         titleUpdateTime = (TextView)findViewById(R.id.title_update_time);
@@ -79,6 +87,13 @@ public class WeatherActivity extends AppCompatActivity {
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         navButton = (Button)findViewById(R.id.nav_button);
+        navSetting = (Button)findViewById(R.id.nav_setting);
+        navSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO
+            }
+        });
         navButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,17 +177,37 @@ public class WeatherActivity extends AppCompatActivity {
             View view = LayoutInflater.from(this).inflate(R.layout.forecast_item,forecastLayout,false);
             TextView dateText = (TextView)view.findViewById(R.id.date_text);
             TextView infoText = (TextView)view.findViewById(R.id.info_text);
-            TextView maxText = (TextView)view.findViewById(R.id.max_text);
-            TextView minText = (TextView)view.findViewById(R.id.min_text);
+            TextView tempText = (TextView)view.findViewById(R.id.temp_text);
             dateText.setText(forecast.date);
             infoText.setText(forecast.more.info);
-            maxText.setText(forecast.temperature.max);
-            minText.setText(forecast.temperature.min);
+            tempText.setText(forecast.temperature.min+"~"+forecast.temperature.max+"℃");
             forecastLayout.addView(view);
         }
         if (weather.aqi!=null){
             aqiText.setText(weather.aqi.city.aqi);
             pm25Text.setText(weather.aqi.city.pm25);
+            int aqi = Integer.valueOf(weather.aqi.city.aqi);
+            String currentText="无";
+            if (aqi<=50){
+                currentText = "优秀";
+                aqiColor.setBackgroundResource(R.color.AQI_Good);
+            }else if(aqi>=51&&aqi<=100){
+                currentText = "良好";
+                aqiColor.setBackgroundResource(R.color.AQI_Ok);
+            }else if(aqi>=101&&aqi<=150){
+                currentText = "不适合敏感人群";
+                aqiColor.setBackgroundResource(R.color.AQI_LittleBad);
+            }else if(aqi>=151&&aqi<=200){
+                currentText = "不健康";
+                aqiColor.setBackgroundResource(R.color.AQI_Unhealth);
+            }else if(aqi>=201&&aqi<=300){
+                currentText = "非常不健康";
+                aqiColor.setBackgroundResource(R.color.AQI_VeryUnhealth);
+            }else if(aqi>=301&&aqi<=500){
+                currentText = "危险";
+                aqiColor.setBackgroundResource(R.color.AQI_Dangerous);
+            }
+            aqiScore.setText("空气质量评价："+currentText);
         }
         String comfort = "舒适度："+weather.suggestion.comfort.info;
         String carWash = "洗车指数："+weather.suggestion.carWash.info;

@@ -9,7 +9,9 @@
         android:id="@+id/nav_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:background="@drawable/ic_choose"/>
@@ -27,10 +29,23 @@
         android:id="@+id/title_update_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:textColor="#fff"
         android:textSize="12sp"
         tools:text="最后更新于 09:47"/>
+
+    <Button
+        android:id="@+id/nav_setting"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/ic_setting"
+        android:visibility="gone"
+        />
 </RelativeLayout>

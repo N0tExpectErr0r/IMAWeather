@@ -3,5 +3,12 @@
     <color name="colorPrimary">#8BC34A</color>
     <color name="colorPrimaryDark">#689F38</color>
     <color name="colorAccent">#8BC34A</color>
-    <color name="backGroundColor">#FEFEFE</color>
+    <color name="backGroundColor">#9BD35A</color>
+    
+    <color name="AQI_Good">#00FF99</color>
+    <color name="AQI_Ok">#FFFF66</color>
+    <color name="AQI_LittleBad">#FF6633</color>
+    <color name="AQI_Unhealth">#FF3333</color>
+    <color name="AQI_VeryUnhealth">#993399</color>
+    <color name="AQI_Dangerous">#993333</color>
 </resources>
