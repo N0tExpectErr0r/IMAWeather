@@ -134,7 +134,7 @@ public class ChooseAreaFragment extends Fragment {
 
     //查询全国所有市，优先从数据库查询，若没有查询到再去服务器查询
     private void queryCities(){
-        titleText.setText(selectedProvince.getProvinceName()+"省");
+        titleText.setText(selectedProvince.getProvinceName());
         backButton.setVisibility(View.VISIBLE);
         cityList = DataSupport.where("provinceid = ?",String.valueOf(selectedProvince.getId())).find(City.class);
         if (cityList.size() > 0){
@@ -154,7 +154,7 @@ public class ChooseAreaFragment extends Fragment {
 
     //查询全国所有县，优先从数据库查询，若没有查询到再去服务器查询
     private void queryCounties(){
-        titleText.setText(selectedCity.getCityName()+"市");
+        titleText.setText(selectedCity.getCityName());
         backButton.setVisibility(View.VISIBLE);
         countyList = DataSupport.where("cityid = ?",String.valueOf(selectedCity.getId())).find(County.class);
         if (countyList.size() > 0){
@@ -192,7 +192,7 @@ public class ChooseAreaFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
-                boolean result = false;
+                boolean result = false;  
                 if ("province".equals(type)){
                     result = Utility.handleProvinceResponse(responseText);
                 }else if ("city".equals(type)){
